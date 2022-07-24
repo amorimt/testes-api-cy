@@ -6,8 +6,9 @@ describe('Login', () => {
         cy.request({
             method: 'POST',
             url: 'login',
-            body: {
-                "email": "fulano@qa.com",
+            body:
+             {
+                "email": "tamiris_qa@ebac.com.br",
                 "password": "teste" 
             }
         }).then((response) => {
