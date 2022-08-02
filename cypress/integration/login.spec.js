@@ -8,7 +8,7 @@ describe('Login', () => {
             url: 'login',
             body:
              {
-                "email": "tamiris_qa@ebac.com.br",
+                "email": "tam@qa.com.br",
                 "password": "teste" 
             }
         }).then((response) => {

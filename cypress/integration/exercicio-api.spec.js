@@ -1,10 +1,11 @@
 /// <reference types="cypress" />
+import usuariosSchema from '../contracts/usuarios.contract';
 import contrato from '../contracts/usuarios.contract'
 
 describe('Testes da Funcionalidade Usuários', () => {
      let token
      before(() => {
-          cy.token('tamiris_qa@ebac.com.br', 'teste').then(tkn => { token = tkn })
+          cy.token('tam@qa.com.br', 'teste').then(tkn => { token = tkn })
      });
 
      it('Deve validar contrato de usuários', () => {
@@ -29,8 +30,8 @@ describe('Testes da Funcionalidade Usuários', () => {
                method: 'POST',
                url: 'usuarios',
                body: {
-                    "nome": "Beatriz Buarque",
-                    "email": "bia_testeqa@teste.com",
+                    "nome": "Edileuza",
+                    "email": "edi_testeqa@teste.com",
                     "password": "teste",
                     "administrador": "true"
                },
@@ -41,18 +42,19 @@ describe('Testes da Funcionalidade Usuários', () => {
           })
      });
 
-     it('Deve editar um usuário previamente cadastrado', () => {
+     it.only('Deve editar um usuário previamente cadastrado', () => {
           cy.request('usuarios').then(response => {
-               let id = response.body.usuarios[3]._id
+               let id = response.body.usuarios[0]._id
+
                cy.request({
                     method: 'PUT',
                     url: `usuarios/${id}`,
                     headers: { authorization: token },
                     body:
                     {
-                         "nome": "Maria Fernandez",
-                         "email": "maria_s@teste.com.br",
-                         "password": "teste",
+                         "nome": 'Edson',
+                         "email":'pedro@teste.com',
+                         "password": 'teste',
                          "administrador": "true"
                     }
                }).then(response => {
